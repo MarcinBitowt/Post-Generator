@@ -20,21 +20,8 @@ public class AppController {
         return facebookService.createFacebookAuthorizationURL();
     }
 
-//    @GetMapping("/facebook")
-//    public void createFacebookAccessToken(@RequestParam("code") String code){
-//        facebookService.createFacebookAccessToken(code);
-//    }
-
-//    @GetMapping("/getName")
-//    public String getNameResponse(){
-//        return facebookService.getName();
-//    }
-
-    @GetMapping("/getMail")
-    public String getMail(){
-        return facebookService.getEmail();
+    @GetMapping("/facebook")
+    public void createFacebookAccessToken(@RequestParam("code") String code){
+        facebookService.createFacebookAccessToken(code);
     }
-
-
-
 }

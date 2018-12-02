@@ -1,14 +1,15 @@
 package com.bitowt.postgenerator.service;
 
 import com.bitowt.postgenerator.entity.FacebookUser;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Parameter;
+import com.restfb.types.FacebookType;
+import com.restfb.types.InstagramUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.GraphApi;
+import org.springframework.social.facebook.api.*;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.oauth2.AccessGrant;
@@ -29,10 +30,9 @@ public class FacebookService {
     @Autowired
     private AccessGrantContainer accessGrantContainer;
 
-
     private UsersConnectionRepository usersConnectionRepository;
 
-    private GraphApi graphApi;
+    private  GraphApi graphApi;
 
     private String accessToken;
 
@@ -43,7 +43,9 @@ public class FacebookService {
         OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
         OAuth2Parameters params = new OAuth2Parameters();
         params.setRedirectUri("http://localhost:8080/logged");
-        params.setScope("public_profile,email,user_birthday,user_posts,user_photos,manage_pages,publish_actions");
+        params.setScope("public_profile,publish_pages,user_birthday,user_posts,user_photos,manage_pages,publish_to_groups");
+        System.out.println(params.getScope());
+
         return oauthOperations.buildAuthorizeUrl(params);
     }
 
@@ -65,8 +67,14 @@ public class FacebookService {
         Facebook facebook = new FacebookTemplate(accessToken);
         String field = "email";
         return facebook.fetchObject("me", String.class, field);
-
     }
 
-
+    public void post() {
+        Facebook facebook = new FacebookTemplate(accessToken);
+        //MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+        //map.set("message", "TestKurrrr");
+        //map.set("access_token", accessToken);
+        //facebook.post("me","feed",map);
+        facebook.feedOperations().updateStatus("TESssstKurrrr");
+    }
 }

@@ -55,8 +55,8 @@ public class LoggedPage extends UI {
         //FileUpload fileUpload= new FileUpload();
 
         addPostButton.addClickListener(clickEvent -> Notification.show("Post sent", Notification.Type.TRAY_NOTIFICATION));
-        //addPostButton.addClickListener(e -> facebookService.postStatusOnPage());
-        addPostButton.addClickListener(e -> textArea.setCaption(facebookService.getFacebookUser().getBirthday().toUpperCase()));
+        addPostButton.addClickListener(e -> facebookService.post());
+
 
         verticalLayout.addComponents(welcomeLabel, encourage, textArea);
         horizontalLayout.addComponents(fileUpload, addPostButton);
