@@ -2,7 +2,6 @@ package com.bitowt.postgenerator.service;
 
 import com.bitowt.postgenerator.entity.FacebookUser;
 
-import com.restfb.types.send.ShareButton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.facebook.api.*;
@@ -12,6 +11,7 @@ import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class FacebookService {
@@ -51,12 +51,7 @@ public class FacebookService {
 
     public void post() {
         Facebook facebook = new FacebookTemplate(accessToken);
-        //MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-        //map.set("message", "TestKurrrr");
-        //map.set("access_token", accessToken);
-        //facebook.post("me","feed",map);
-        facebook.feedOperations().updateStatus("TESssstKurrrr");
-        ShareButton shareButton = new ShareButton();
+        facebook.feedOperations().updateStatus("Test");
 
     }
 }

@@ -3,13 +3,15 @@ package com.bitowt.postgenerator.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.linkedin.api.LinkedIn;
+import org.springframework.social.linkedin.api.LinkedInProfile;
 import org.springframework.social.linkedin.api.impl.LinkedInTemplate;
-import org.springframework.social.linkedin.config.support.LinkedInApiHelper;
 import org.springframework.social.linkedin.connect.LinkedInConnectionFactory;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class LinkedinService {
@@ -43,10 +45,15 @@ public class LinkedinService {
         linkedIn = new LinkedInTemplate(accessToken);
     }
 
-    public void addPostTest()
-    {
+    public void addPostTest() {
         linkedIn = new LinkedInTemplate(accessToken);
-        linkedIn.groupOperations().createPost(6402952,"Test","Test");
-        System.out.println(linkedIn.profileOperations().getUserProfile().getId());
+
+        System.out.println("Profile id: " + linkedIn.profileOperations().getProfileId());
+        System.out.println("Profile URL: " + linkedIn.profileOperations().getProfileUrl());
+
+        linkedIn.groupOperations().createPost(25252362,"test","test").getHost();
+        //linkedIn.groupOperations().likePost("https://www.linkedin.com/feed/update/urn:li:activity:6480497138617978881");
+        //linkedIn.groupOperations().createPost(6402952,"Test","Test");
+        //linkedIn.profileOperations().getProfileById()
     }
 }

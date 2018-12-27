@@ -39,8 +39,8 @@ public class LoggedPage extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        //validateFacebook(vaadinRequest);
-        validateLinkedin(vaadinRequest);
+        validateFacebook(vaadinRequest);
+        //validateLinkedin(vaadinRequest);
     }
 
     private void validateFacebook(VaadinRequest vaadinRequest) {
@@ -97,6 +97,7 @@ public class LoggedPage extends UI {
     public VerticalLayout loggedPageLinkedInView() {
         VerticalLayout verticalLayout = new VerticalLayout();
         HorizontalLayout horizontalLayout = new HorizontalLayout();
+
         linkedIn = new LinkedInTemplate(lnAccessGrantContainer.getAccessGrant().getAccessToken());
 
         verticalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
