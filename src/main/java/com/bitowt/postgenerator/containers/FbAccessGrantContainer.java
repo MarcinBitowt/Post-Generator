@@ -1,10 +1,10 @@
-package com.bitowt.postgenerator.service;
+package com.bitowt.postgenerator.containers;
 
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LnAccessGrantContainer {
+public class FbAccessGrantContainer {
 
     private AccessGrant accessGrant;
 

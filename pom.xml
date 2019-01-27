@@ -6,7 +6,7 @@
     <groupId>com.bitowt</groupId>
     <artifactId>postgenerator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Post generator</name>
     <description>Engineer project</description>
@@ -35,15 +35,6 @@
             <version>2.12.0</version>
         </dependency>
         <dependency>
-            <groupId>org.grails.plugins</groupId>
-            <artifactId>spring-social-instagram</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -63,6 +54,17 @@
             <version>2.0.3.RELEASE</version>
         </dependency>
         <dependency>
+            <groupId>instagram-api</groupId>
+            <artifactId>instagram-api</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>spring-social-instagram</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-core</artifactId>
             <version>1.1.6.RELEASE</version>
@@ -75,8 +77,9 @@
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-linkedin</artifactId>
-            <version>1.0.0.RELEASE</version>
+            <version>1.0.2.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-twitter</artifactId>
@@ -90,6 +93,11 @@
             <groupId>com.restfb</groupId>
             <artifactId>restfb</artifactId>
             <version>2.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
+            <version>1.1.6.RELEASE</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -109,6 +117,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>2.0.6</version>
             </plugin>
         </plugins>
     </build>

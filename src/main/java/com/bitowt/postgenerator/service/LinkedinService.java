@@ -1,9 +1,9 @@
 package com.bitowt.postgenerator.service;
 
+import com.bitowt.postgenerator.containers.LnAccessGrantContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.linkedin.api.LinkedIn;
-import org.springframework.social.linkedin.api.LinkedInProfile;
 import org.springframework.social.linkedin.api.impl.LinkedInTemplate;
 import org.springframework.social.linkedin.connect.LinkedInConnectionFactory;
 import org.springframework.social.oauth2.AccessGrant;
@@ -11,7 +11,6 @@ import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class LinkedinService {
@@ -24,7 +23,7 @@ public class LinkedinService {
     @Autowired
     private LnAccessGrantContainer lnAccessGrantContainer;
 
-    private String accessToken;
+    private String accessToken="";
 
     private LinkedIn linkedIn;
 
@@ -43,6 +42,11 @@ public class LinkedinService {
         lnAccessGrantContainer.setAccessGrant(accessGrant);
         accessToken = accessGrant.getAccessToken();
         linkedIn = new LinkedInTemplate(accessToken);
+        System.out.println("LinkedIn accesss token: "+accessToken);
+    }
+
+    public String getAccessToken() {
+        return accessToken;
     }
 
     public void addPostTest() {
@@ -50,8 +54,11 @@ public class LinkedinService {
 
         System.out.println("Profile id: " + linkedIn.profileOperations().getProfileId());
         System.out.println("Profile URL: " + linkedIn.profileOperations().getProfileUrl());
+        System.out.println("E-mail: "+ linkedIn.profileOperations().getUserProfile().getEmailAddress());
 
-        linkedIn.groupOperations().createPost(25252362,"test","test").getHost();
+        //linkedIn.groupOperations().createPost(0,"test","test");
+
+        linkedIn.groupOperations().addCommentToPost("6480497138617978881","This comment is generated from code");
         //linkedIn.groupOperations().likePost("https://www.linkedin.com/feed/update/urn:li:activity:6480497138617978881");
         //linkedIn.groupOperations().createPost(6402952,"Test","Test");
         //linkedIn.profileOperations().getProfileById()
